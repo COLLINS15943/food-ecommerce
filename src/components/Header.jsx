@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Header.css';
 import { logo, searchIcon, basketIcon } from '../constants/images';
 import { useCart } from '../context/CartContext';
 import AuthModal from './AuthModal';
+import { IoHomeOutline, IoRestaurantOutline, IoPhonePortraitOutline, IoCallOutline, IoPersonOutline } from 'react-icons/io5';
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState('home');
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { getCartCount, setIsCartOpen } = useCart();
+
+  // Close mobile menu when resizing to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMobileMenuOpen]);
 
   const scrollToSection = (sectionId, linkName) => {
     setActiveLink(linkName);
@@ -114,7 +127,7 @@ const Header = () => {
               className={activeLink === 'home' ? 'active' : ''}
               onClick={(e) => { e.preventDefault(); scrollToSection('home', 'home'); }}
             >
-              <span className="nav-icon home-icon">🏠</span>
+              <span className="nav-icon home-icon"><IoHomeOutline /></span>
               Home
             </a>
           </li>
@@ -124,7 +137,7 @@ const Header = () => {
               className={activeLink === 'menu' ? 'active' : ''}
               onClick={(e) => { e.preventDefault(); scrollToSection('menu', 'menu'); }}
             >
-              <span className="nav-icon menu-icon">�</span>
+              <span className="nav-icon menu-icon"><IoRestaurantOutline /></span>
               Menu
             </a>
           </li>
@@ -134,7 +147,7 @@ const Header = () => {
               className={activeLink === 'mobile-app' ? 'active' : ''}
               onClick={(e) => { e.preventDefault(); scrollToSection('mobile-app', 'mobile-app'); }}
             >
-              <span className="nav-icon app-icon">📱</span>
+              <span className="nav-icon app-icon"><IoPhonePortraitOutline /></span>
               Mobile App
             </a>
           </li>
@@ -144,13 +157,13 @@ const Header = () => {
               className={activeLink === 'contact' ? 'active' : ''}
               onClick={(e) => { e.preventDefault(); scrollToSection('contact', 'contact'); }}
             >
-              <span className="nav-icon contact-icon">📞</span>
+              <span className="nav-icon contact-icon"><IoCallOutline /></span>
               Contact Us
             </a>
           </li>
           <li className="mobile-signin">
             <button onClick={() => { setIsAuthModalOpen(true); setIsMobileMenuOpen(false); }}>
-              <span className="nav-icon user-icon">👤</span>
+              <span className="nav-icon user-icon"><IoPersonOutline /></span>
               Sign Up
             </button>
           </li>

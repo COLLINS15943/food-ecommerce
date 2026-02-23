@@ -214,25 +214,25 @@
 }
 
 .nav-icon {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   width: 28px;
   height: 28px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  filter: none;
-  -webkit-text-fill-color: initial;
-  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+  color: #666;
+  transition: color 0.3s ease;
 }
 
-/* Ensure emojis render in color */
-.home-icon,
-.menu-icon,
-.app-icon,
-.contact-icon,
-.user-icon {
-  filter: grayscale(0%) brightness(1.1) saturate(1.2);
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+.nav-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.mobile-nav-list li a:hover .nav-icon,
+.mobile-nav-list li button:hover .nav-icon,
+.mobile-nav-list li a.active .nav-icon {
+  color: #ff5722;
 }
 
 .mobile-signin button {
