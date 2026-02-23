@@ -18,7 +18,7 @@
   width: auto;
 }
 
-.nav-list {
+.desktop-nav .nav-list {
   display: flex;
   list-style: none;
   gap: 2.5rem;
@@ -26,7 +26,7 @@
   padding: 0;
 }
 
-.nav-list a {
+.desktop-nav .nav-list a {
   text-decoration: none;
   color: #333;
   font-size: 1rem;
@@ -35,7 +35,7 @@
   padding-bottom: 5px;
 }
 
-.nav-list a::after {
+.desktop-nav .nav-list a::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -47,15 +47,15 @@
   transition: transform 0.3s;
 }
 
-.nav-list a:hover::after {
+.desktop-nav .nav-list a:hover::after {
   transform: scaleX(1);
 }
 
-.nav-list a.active::after {
+.desktop-nav .nav-list a.active::after {
   transform: scaleX(1);
 }
 
-.nav-list a:hover {
+.desktop-nav .nav-list a:hover {
   color: #333;
 }
 
@@ -120,12 +120,153 @@
   background-color: #f5f5f5;
 }
 
+/* Hamburger Menu Button */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+}
+
+.hamburger-btn span {
+  width: 28px;
+  height: 3px;
+  background-color: #ff5722;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.hamburger-btn.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobile-nav {
+  position: fixed;
+  top: 72px;
+  right: -100%;
+  width: 280px;
+  height: calc(100vh - 72px);
+  background-color: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out;
+  z-index: 99;
+  overflow-y: auto;
+}
+
+.mobile-nav.open {
+  right: 0;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  padding: 2rem 0;
+  margin: 0;
+}
+
+.mobile-nav-list li {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mobile-nav-list li a,
+.mobile-nav-list li button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 2rem;
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: all 0.3s;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.mobile-nav-list li a:hover,
+.mobile-nav-list li button:hover {
+  background-color: #f9f9f9;
+  color: #ff5722;
+}
+
+.mobile-nav-list li a.active {
+  background-color: #fff5f2;
+  color: #ff5722;
+  border-left: 4px solid #ff5722;
+}
+
+.nav-icon {
+  font-size: 1.3rem;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  filter: none;
+  -webkit-text-fill-color: initial;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+}
+
+/* Ensure emojis render in color */
+.home-icon,
+.menu-icon,
+.app-icon,
+.contact-icon,
+.user-icon {
+  filter: grayscale(0%) brightness(1.1) saturate(1.2);
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.mobile-signin button {
+  color: #ff5722;
+  font-weight: 600;
+}
+
+/* Mobile Menu Backdrop */
+.mobile-menu-backdrop {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 98;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 992px) {
-  .nav-list {
+  .desktop-nav .nav-list {
     gap: 1.5rem;
   }
 
-  .nav-list a {
+  .desktop-nav .nav-list a {
     font-size: 0.9rem;
   }
 }
@@ -139,8 +280,16 @@
     height: 35px;
   }
 
-  .nav {
+  .desktop-nav {
     display: none;
+  }
+
+  .desktop-signin {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: flex;
   }
 
   .header-actions {
@@ -153,9 +302,13 @@
     height: 20px;
   }
 
-  .signin-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+  .mobile-nav {
+    top: 64px;
+    height: calc(100vh - 64px);
+  }
+
+  .mobile-menu-backdrop {
+    top: 64px;
   }
 }
 
@@ -168,13 +321,50 @@
     gap: 0.5rem;
   }
 
-  .signin-btn {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
-  }
-
   .search-btn,
   .cart-btn {
     padding: 0.3rem;
+  }
+
+  .hamburger-btn {
+    width: 24px;
+    height: 20px;
+  }
+
+  .hamburger-btn span {
+    width: 24px;
+    height: 2.5px;
+  }
+
+  .hamburger-btn.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger-btn.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-nav {
+    width: 260px;
+    top: 56px;
+    height: calc(100vh - 56px);
+  }
+
+  .mobile-menu-backdrop {
+    top: 56px;
+  }
+
+  .mobile-nav-list {
+    padding: 1.5rem 0;
+  }
+
+  .mobile-nav-list li a,
+  .mobile-nav-list li button {
+    padding: 1rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .nav-icon {
+    font-size: 1.2rem;
   }
 }
