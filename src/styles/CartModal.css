@@ -6,6 +6,8 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .cart-modal {
@@ -177,7 +179,8 @@
   padding: 0.8rem;
   border: 1px solid #ddd;
   border-radius: 6px;
-  font-size: 0.9rem;
+  font-size: 16px;
+  max-width: 100%;
 }
 
 .promo-input-group button {
@@ -347,11 +350,11 @@
 
   .promo-input-group input,
   .promo-input-group button {
-    font-size: 0.85rem;
-    padding: 0.7rem;
+    font-size: 16px;
+    padding: 0.75rem;
   }
 
   .promo-input-group button {
-    padding: 0.7rem 1rem;
+    padding: 0.75rem 1rem;
   }
 }
