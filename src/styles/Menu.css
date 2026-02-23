@@ -206,13 +206,43 @@
   color: #ff9800;
 }
 
+@media (max-width: 992px) {
+  .menu-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .categories {
+    gap: 1.5rem;
+  }
+
+  .category-circle {
+    width: 90px;
+    height: 90px;
+  }
+
+  .dishes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.8rem;
+  }
+}
+
 @media (max-width: 768px) {
   .menu-section {
-    padding: 0 2rem;
+    margin: 2rem 0;
+  }
+
+  .menu-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .menu-description {
+    font-size: 0.9rem;
+    margin: 0 0 2rem 0;
   }
 
   .categories {
     gap: 1rem;
+    margin-bottom: 3rem;
   }
 
   .category-item {
@@ -222,10 +252,119 @@
   .category-circle {
     width: 80px;
     height: 80px;
+    border: 2px solid #f0f0f0;
+  }
+
+  .category-item p {
+    font-size: 0.85rem;
+  }
+
+  .dishes-title {
+    margin: 2rem 0 1.5rem 0;
+    font-size: 1.6rem;
   }
 
   .dishes-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1.5rem;
+  }
+
+  .dish-image {
+    height: 180px;
+  }
+
+  .dish-info h3 {
+    font-size: 1rem;
+  }
+
+  .dish-price {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-section {
+    margin: 1.5rem 0;
+  }
+
+  .menu-container h2 {
+    font-size: 1.4rem;
+  }
+
+  .menu-description {
+    font-size: 0.85rem;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .categories {
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .category-item {
+    min-width: 70px;
+  }
+
+  .category-circle {
+    width: 70px;
+    height: 70px;
+  }
+
+  .category-item p {
+    font-size: 0.8rem;
+  }
+
+  .dishes-title {
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.4rem;
+  }
+
+  .dishes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .dish-card {
+    border-radius: 10px;
+  }
+
+  .dish-image {
+    height: 150px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .dish-info {
+    padding: 0.8rem;
+  }
+
+  .dish-info h3 {
+    font-size: 0.9rem;
+  }
+
+  .dish-price {
+    font-size: 0.95rem;
+  }
+
+  .add-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .add-btn img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .item-counter {
+    padding: 0.2rem 0.4rem;
+  }
+
+  .item-counter button img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .star {
+    font-size: 0.9rem;
   }
 }

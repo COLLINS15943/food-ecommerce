@@ -35,14 +35,14 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Get In Touch</h3>
           <ul>
-            <li>+233544993066</li>
-            <li>leo@gmail.com</li>
+            <li>+233559438418</li>
+            <li>agbocollins15@gmail.com</li>
           </ul>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>Copyright © Korios Dev Hussle</p>
+        <p>Copyright © Star Dev</p>
       </div>
     </footer>
   );

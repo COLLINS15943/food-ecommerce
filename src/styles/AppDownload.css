@@ -38,8 +38,54 @@
   transform: scale(1.05);
 }
 
+@media (max-width: 992px) {
+  .app-download-container h2 {
+    font-size: 1.8rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .app-download {
+    margin: 3rem 0;
+  }
+
+  .app-download-text {
+    font-size: 0.9rem;
+  }
+
+  .app-download-container h2 {
+    font-size: 1.6rem;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .app-download-buttons {
+    gap: 1rem;
+  }
+
   .app-download-buttons img {
     width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-download {
+    margin: 2rem 0;
+  }
+
+  .app-download-text {
+    font-size: 0.85rem;
+  }
+
+  .app-download-container h2 {
+    font-size: 1.4rem;
+    margin: 0 0 1.2rem 0;
+  }
+
+  .app-download-buttons {
+    gap: 0.8rem;
+  }
+
+  .app-download-buttons img {
+    width: 130px;
   }
 }
